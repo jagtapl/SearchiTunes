@@ -35,6 +35,8 @@ class SearchViewController: UIViewController {
         tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingFoundCell)
         
         tableView.rowHeight = 80
+        
+        searchBar.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,6 +113,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.nameLabel.text = searchResult.name
             cell.artistNameLabel.text = searchResult.artistName
             return cell
-        }        
+        }
     }
 }
