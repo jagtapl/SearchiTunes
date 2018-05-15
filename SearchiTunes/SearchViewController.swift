@@ -18,6 +18,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
     var searchResults = [SearchResult]()
     var hasSearched = false
     
@@ -49,26 +51,31 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("The search text is: '\(searchBar.text!)'")
-
-        searchBar.resignFirstResponder()        // hide keyboard or u could have set attribute to do so
-        searchResults = []
         
-        if searchBar.text! != "justin" {
-            for i in 0...2 {
-                let searchResult = SearchResult()
-                searchResult.name = String(format: "Fake Result %d for '%@'", i, searchBar.text!)
-          
-                searchResult.artistName = searchBar.text!
-                searchResults.append(searchResult)
+        if !searchBar.text!.isEmpty {
+            searchBar.resignFirstResponder()        // hide keyboard or u could have set attribute to do so
+        
+            hasSearched = true
+            searchResults = []
+        
+            let url = iTunesURL(searchText: searchBar.text!)
+            print("URL: '\(url)'")
+            
+            if let data = performStoreRequest(with: url) {
+                searchResults = parse(data: data)
             }
+            
+//            searchResults.sort(by: {result1, result2 in
+//                return result1.name.localizedStandardCompare(result2.name) == .orderedAscending})
+
+//            searchResults.sort { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
+            
+//            searchResults.sort { $0 < $1 }
+  
+            searchResults.sort { $0 > $1 }
+            
+            tableView.reloadData()
         }
-        hasSearched = true
-        tableView.reloadData()
-    }
-    
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
     }
 }
 
@@ -111,8 +118,52 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
             let searchResult = searchResults[indexPath.row]
             cell.nameLabel.text = searchResult.name
-            cell.artistNameLabel.text = searchResult.artistName
+            //cell.artistNameLabel.text = searchResult.artistName
+            if searchResult.artistName.isEmpty {
+                cell.artistNameLabel.text = "Unknown"
+            } else {
+                cell.artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, searchResult.type)
+            }
             return cell
         }
+    }
+    
+    // MARK:- Private Methods
+    func iTunesURL(searchText: String) -> URL {
+        let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@", encodedText)
+        let url = URL(string: urlString)
+        return url!
+    }
+    
+    func performStoreRequest(with url: URL) -> Data? {
+        do {
+            //return try String(contentsOf: url, encoding: .utf8)
+            return try Data(contentsOf: url)
+        } catch {
+            print("Download Error \(error.localizedDescription)")
+            showNetworkError()
+            return nil
+        }
+    }
+    
+    func parse(data: Data) -> [SearchResult] {
+        do {
+            let decoder = JSONDecoder()
+            let result = try decoder.decode(ResultArray.self, from: data)
+            return result.results
+        } catch {
+            print("JSON Error \(error)")
+            return []
+        }
+    }
+    
+    func showNetworkError() {
+        let alert = UIAlertController(title: "Whoops...", message: "There was an error accessing the iTunes Store." + " Please try again.", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 }
