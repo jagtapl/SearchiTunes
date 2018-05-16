@@ -24,6 +24,7 @@ class SearchViewController: UIViewController {
     var searchResults = [SearchResult]()
     var hasSearched = false
     var isLoading = false
+    var dataTask: URLSessionDataTask?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +64,8 @@ extension SearchViewController: UISearchBarDelegate {
             tableView.reloadData()
             hasSearched = true
             searchResults = []
-        
+            dataTask?.cancel()
+            
             // 1
             let url = self.iTunesURL(searchText: searchBar.text!)
 
@@ -71,11 +73,12 @@ extension SearchViewController: UISearchBarDelegate {
             let session = URLSession.shared
             
             // 3
-            let dataTask = session.dataTask(with: url) { data, response, error in
+            dataTask = session.dataTask(with: url) { data, response, error in
+            
             // 4
                 print("On main thread? " + (Thread.current.isMainThread ? "Yes" : "No"))
-                if let error = error {
-                    print("Failure ! \(error)")
+                if let error = error as NSError?, error.code == -999 {
+                    return      // search was cancelled
                 } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
                     print("Success! \(response!)")
                     print("data \(data!)")
@@ -99,7 +102,7 @@ extension SearchViewController: UISearchBarDelegate {
                 }
             }
             // 5
-            dataTask.resume()
+            dataTask?.resume()
         }
     }
 }
