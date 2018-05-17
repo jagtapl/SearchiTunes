@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D116B82B20ADE58400B81646 /* UIImage+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D116B82A20ADE58400B81646 /* UIImage+DownloadImage.swift */; };
 		D17DA60D20A10D5C00595862 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA60C20A10D5C00595862 /* SearchResult.swift */; };
 		D17DA60F20A11C2400595862 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D17DA60E20A11C2400595862 /* SearchResultCell.xib */; };
 		D17DD0B120A201FA00DEC771 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D17DD0B020A201FA00DEC771 /* NothingFoundCell.xib */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D116B82A20ADE58400B81646 /* UIImage+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+DownloadImage.swift"; sourceTree = "<group>"; };
 		D17DA60C20A10D5C00595862 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		D17DA60E20A11C2400595862 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		D17DD0B020A201FA00DEC771 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			children = (
 				D1EFD21320A0ACB40079295E /* AppDelegate.swift */,
 				D1EFD21520A0ACB40079295E /* SearchViewController.swift */,
+				D116B82A20ADE58400B81646 /* UIImage+DownloadImage.swift */,
 				D1ABD5B020A1FC7800C7DA7C /* SearchResultCell.swift */,
 				D17DD0B020A201FA00DEC771 /* NothingFoundCell.xib */,
 				D17DA60C20A10D5C00595862 /* SearchResult.swift */,
@@ -152,6 +155,7 @@
 				D1EFD21620A0ACB40079295E /* SearchViewController.swift in Sources */,
 				D17DA60D20A10D5C00595862 /* SearchResult.swift in Sources */,
 				D1ABD5B120A1FC7800C7DA7C /* SearchResultCell.swift in Sources */,
+				D116B82B20ADE58400B81646 /* UIImage+DownloadImage.swift in Sources */,
 				D1EFD21420A0ACB40079295E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

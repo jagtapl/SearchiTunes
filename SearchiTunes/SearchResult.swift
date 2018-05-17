@@ -95,5 +95,6 @@ class SearchResult: Codable, CustomStringConvertible {
         }
         return ""
     }
+
 }
 
