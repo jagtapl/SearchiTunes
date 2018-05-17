@@ -45,10 +45,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D1CAC6CB20AE1982009CD2B7 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				D17DA60E20A11C2400595862 /* SearchResultCell.xib */,
+				D1EC314D20ABACDE001AA140 /* LoadingCell.xib */,
+				D17DD0B020A201FA00DEC771 /* NothingFoundCell.xib */,
+			);
+			path = xib;
+			sourceTree = "<group>";
+		};
 		D1EFD20720A0ACB40079295E = {
 			isa = PBXGroup;
 			children = (
-				D1EC314D20ABACDE001AA140 /* LoadingCell.xib */,
 				D1EFD21220A0ACB40079295E /* SearchiTunes */,
 				D1EFD21120A0ACB40079295E /* Products */,
 			);
@@ -65,15 +74,14 @@
 		D1EFD21220A0ACB40079295E /* SearchiTunes */ = {
 			isa = PBXGroup;
 			children = (
+				D1CAC6CB20AE1982009CD2B7 /* xib */,
 				D1EFD21320A0ACB40079295E /* AppDelegate.swift */,
 				D1EFD21520A0ACB40079295E /* SearchViewController.swift */,
 				D116B82A20ADE58400B81646 /* UIImage+DownloadImage.swift */,
 				D1ABD5B020A1FC7800C7DA7C /* SearchResultCell.swift */,
-				D17DD0B020A201FA00DEC771 /* NothingFoundCell.xib */,
 				D17DA60C20A10D5C00595862 /* SearchResult.swift */,
 				D1EFD21720A0ACB40079295E /* Main.storyboard */,
 				D1EFD21A20A0ACB50079295E /* Assets.xcassets */,
-				D17DA60E20A11C2400595862 /* SearchResultCell.xib */,
 				D1EFD21F20A0ACB50079295E /* Info.plist */,
 			);
 			path = SearchiTunes;

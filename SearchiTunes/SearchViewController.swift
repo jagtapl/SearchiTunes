@@ -83,12 +83,12 @@ extension SearchViewController: UISearchBarDelegate {
             dataTask = session.dataTask(with: url) { data, response, error in
             
             // 4
-                print("On main thread? " + (Thread.current.isMainThread ? "Yes" : "No"))
+                //print("On main thread? " + (Thread.current.isMainThread ? "Yes" : "No"))
                 if let error = error as NSError?, error.code == -999 {
                     return      // search was cancelled
                 } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                    print("Success! \(response!)")
-                    print("data \(data!)")
+                    //print("Success! \(response!)")
+                    //print("data \(data!)")
                     if let data = data {
                         self.searchResults = self.parse(data: data)
                         self.searchResults.sort(by: <)
