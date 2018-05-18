@@ -12,6 +12,8 @@
 		D17DA60F20A11C2400595862 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D17DA60E20A11C2400595862 /* SearchResultCell.xib */; };
 		D17DD0B120A201FA00DEC771 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D17DD0B020A201FA00DEC771 /* NothingFoundCell.xib */; };
 		D1ABD5B120A1FC7800C7DA7C /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1ABD5B020A1FC7800C7DA7C /* SearchResultCell.swift */; };
+		D1CAC6CD20AEED5A009CD2B7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CAC6CC20AEED5A009CD2B7 /* DetailViewController.swift */; };
+		D1CAC6CF20AEF7AB009CD2B7 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CAC6CE20AEF7AB009CD2B7 /* DimmingPresentationController.swift */; };
 		D1EC314E20ABACDE001AA140 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EC314D20ABACDE001AA140 /* LoadingCell.xib */; };
 		D1EFD21420A0ACB40079295E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EFD21320A0ACB40079295E /* AppDelegate.swift */; };
 		D1EFD21620A0ACB40079295E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EFD21520A0ACB40079295E /* SearchViewController.swift */; };
@@ -25,6 +27,8 @@
 		D17DA60E20A11C2400595862 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		D17DD0B020A201FA00DEC771 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		D1ABD5B020A1FC7800C7DA7C /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		D1CAC6CC20AEED5A009CD2B7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D1CAC6CE20AEF7AB009CD2B7 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		D1EC314D20ABACDE001AA140 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		D1EFD21020A0ACB40079295E /* SearchiTunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchiTunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1EFD21320A0ACB40079295E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +52,7 @@
 		D1CAC6CB20AE1982009CD2B7 /* xib */ = {
 			isa = PBXGroup;
 			children = (
+				D1EFD21720A0ACB40079295E /* Main.storyboard */,
 				D17DA60E20A11C2400595862 /* SearchResultCell.xib */,
 				D1EC314D20ABACDE001AA140 /* LoadingCell.xib */,
 				D17DD0B020A201FA00DEC771 /* NothingFoundCell.xib */,
@@ -80,7 +85,8 @@
 				D116B82A20ADE58400B81646 /* UIImage+DownloadImage.swift */,
 				D1ABD5B020A1FC7800C7DA7C /* SearchResultCell.swift */,
 				D17DA60C20A10D5C00595862 /* SearchResult.swift */,
-				D1EFD21720A0ACB40079295E /* Main.storyboard */,
+				D1CAC6CC20AEED5A009CD2B7 /* DetailViewController.swift */,
+				D1CAC6CE20AEF7AB009CD2B7 /* DimmingPresentationController.swift */,
 				D1EFD21A20A0ACB50079295E /* Assets.xcassets */,
 				D1EFD21F20A0ACB50079295E /* Info.plist */,
 			);
@@ -161,8 +167,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1EFD21620A0ACB40079295E /* SearchViewController.swift in Sources */,
+				D1CAC6CF20AEF7AB009CD2B7 /* DimmingPresentationController.swift in Sources */,
 				D17DA60D20A10D5C00595862 /* SearchResult.swift in Sources */,
 				D1ABD5B120A1FC7800C7DA7C /* SearchResultCell.swift in Sources */,
+				D1CAC6CD20AEED5A009CD2B7 /* DetailViewController.swift in Sources */,
 				D116B82B20ADE58400B81646 /* UIImage+DownloadImage.swift in Sources */,
 				D1EFD21420A0ACB40079295E /* AppDelegate.swift in Sources */,
 			);
