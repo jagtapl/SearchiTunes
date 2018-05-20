@@ -20,12 +20,67 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    
-    
     var searchResults = [SearchResult]()
     var hasSearched = false
     var isLoading = false
     var dataTask: URLSessionDataTask?
+    
+    var landscapeVC: LandscapeViewController?
+    
+    func showLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
+        // 1
+        guard landscapeVC == nil else { return }
+        // 2
+        landscapeVC = storyboard!.instantiateViewController(withIdentifier:
+        "LandscapeViewController") as? LandscapeViewController
+        if let controller = landscapeVC {
+            // 3
+            controller.view.frame = view.bounds
+            controller.view.alpha = 0
+            
+            // 4
+            view.addSubview(controller.view)
+            addChildViewController(controller)
+
+            // add simple cross fade animation
+            coordinator.animate(alongsideTransition: { _ in
+                controller.view.alpha = 1
+                self.searchBar.resignFirstResponder()
+                if self.presentedViewController != nil {
+                    self.dismiss(animated: true, completion: nil)       // dismiss detail popup 
+                }
+            }, completion: { _ in
+                controller.didMove(toParentViewController: self)
+            })
+        }
+    }
+    
+    func hideLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
+        if let controller = landscapeVC {
+            controller.willMove(toParentViewController: nil)
+            // animation code to fadeout
+            coordinator.animate(alongsideTransition: { _ in
+                controller.view.alpha = 0
+            }, completion: { _ in
+                controller.view.removeFromSuperview()
+                controller.removeFromParentViewController()
+                self.landscapeVC = nil
+            })
+        }
+    }
+        
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+    
+        switch newCollection.verticalSizeClass {
+        case .compact:
+            showLandscape(with: coordinator)
+        case .regular, .unspecified:
+            hideLandscape(with: coordinator)
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
